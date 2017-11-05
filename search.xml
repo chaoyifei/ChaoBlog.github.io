@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F11%2F02%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[Markdown]]></title>
+    <url>%2F2017%2F11%2F05%2FMarkdown%2F</url>
+    <content type="text"><![CDATA[&emsp;&emsp;Markdown 是一种文本格式。你可以用它来控制文档的显示。使用 markdown，你可以创建粗体的文字，斜体的文字，添加图片，并且创建列表 等等。基本上来讲，Markdown 就是普通的文字加上 # 或者 * 等符号。 markdown Markdown语法标题123456# 这是 \&lt;h1&gt; 一级标题## 这是 \&lt;h2&gt; 二级标题### 这是 \&lt;h3&gt; 三级标题#### 这是 \&lt;h4&gt; 四级标题##### 这是 \&lt;h5&gt; 五级标题###### 这是 \&lt;h6&gt; 六级标题 强调这会是 斜体 的文字这会是 斜体 的文字 这会是 粗体 的文字这会是 粗体 的文字 你也 **组合** 这些符号 这个文字将会被横线删除123456789*这会是 斜体 的文字*_这会是 斜体 的文字_**这会是 粗体 的文字**__这会是 粗体 的文字___你也 \*\*组合** 这些符号_~~这个文字将会被横线删除~~ 列表无序列表 Item 1 Item 2 Item 2a Item 2b1234* Item 1* Item 2 * Item 2a * Item 2b 有序列表 Item 1 Item 2 Item 3 Item 3a Item 3b123451. Item 11. Item 21. Item 3 1. Item 3a 1. Item 3b 添加图片Format: 12![GitHub Logo](/images/logo.png)Format: ![Alt Text](url) 链接http://github.com - 自动生成！GitHub12http://github.com - 自动生成！[GitHub](http://github.com) 引用正如 Kanye West 所说： We’re living the future sothe present is our past.123正如 Kanye West 所说：&gt; We&apos;re living the future so&gt; the present is our past. 分割线如下，三个或者更多的 连字符 星号 下划线123456789101112---连字符***星号___下划线 行内代码我觉得你应该在这里使用&lt;addr&gt; 才对。12我觉得你应该在这里使用`&lt;addr&gt;` 才对。 代码块你可以在你的代码上面和下面添加 来表示代码块。12```你可以在你的代码上面和下面添加 ``` 来表示代码块。 语法高亮你可以给你的代码块添加任何一种语言的语法高亮 例如，给 ruby 代码添加语法高亮： 123require 'redcarpet'markdown = Redcarpet.new("Hello World!")puts markdown.to_html markdown表示：1234```rubyrequire &apos;redcarpet&apos;markdown = Redcarpet.new(&quot;Hello World!&quot;)puts markdown.to_html 代码块 class（MPE 扩展的特性）你可以给你的代码块设置 class。 例如，添加 class1 class2 到一个 代码块： &#123;.class1 .class&#125;123function add(x, y) &#123; return x + y&#125; markdownb表示12345678你可以给你的代码块设置 class。例如，添加 class1 class2 到一个 代码块：```javascript &#123;.class1 .class&#125;function add(x, y) &#123; return x + y&#125; 代码行数如果你想要你的代码块显示代码行数，只要添加 line-numbers class 就可以了。 例如： &#123;.line-numbers&#125;123function add(x, y) &#123; return x + y&#125; markdown表示1234```javascript &#123;.line-numbers&#125;function add(x, y) &#123; return x + y&#125;]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>markdown,hexo</tag>
+      </tags>
   </entry>
 </search>
