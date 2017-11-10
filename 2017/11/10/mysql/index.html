@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="mysql基本操作对用户授权的操作">
+<meta name="description" content="mysql基本操作对用户授权的操作grant  权限  on  数据库名.表名 to 用户名@’可以访问的地址’ identified by “密码”权限：  all  所有权限    usage 无权限   select,update,insert,delete，等权限数据库.表名： &amp;emsp; *.* &amp;emsp; 所有数据库的所有表&amp;emsp;&amp;emsp; &amp;emsp;&amp;emsp;&amp;ems">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql脚本操作">
 <meta property="og:url" content="http://yoursite.com/2017/11/10/mysql/index.html">
 <meta property="og:site_name" content="CHaoyi&#39;s">
-<meta property="og:description" content="mysql基本操作对用户授权的操作">
+<meta property="og:description" content="mysql基本操作对用户授权的操作grant  权限  on  数据库名.表名 to 用户名@’可以访问的地址’ identified by “密码”权限：  all  所有权限    usage 无权限   select,update,insert,delete，等权限数据库.表名： &amp;emsp; *.* &amp;emsp; 所有数据库的所有表&amp;emsp;&amp;emsp; &amp;emsp;&amp;emsp;&amp;ems">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-10T09:18:52.637Z">
+<meta property="og:updated_time" content="2017-11-10T15:43:26.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql脚本操作">
-<meta name="twitter:description" content="mysql基本操作对用户授权的操作">
+<meta name="twitter:description" content="mysql基本操作对用户授权的操作grant  权限  on  数据库名.表名 to 用户名@’可以访问的地址’ identified by “密码”权限：  all  所有权限    usage 无权限   select,update,insert,delete，等权限数据库.表名： &amp;emsp; *.* &amp;emsp; 所有数据库的所有表&amp;emsp;&amp;emsp; &amp;emsp;&amp;emsp;&amp;ems">
 
 
 
@@ -397,7 +397,31 @@
       
 
       
-        <h1 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h1><h2 id="对用户授权的操作"><a href="#对用户授权的操作" class="headerlink" title="对用户授权的操作"></a>对用户授权的操作</h2>
+        <h1 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h1><h2 id="对用户授权的操作"><a href="#对用户授权的操作" class="headerlink" title="对用户授权的操作"></a>对用户授权的操作</h2><p><strong>grant  权限  on  数据库名.表名 to 用户名@’可以访问的地址’ identified by “密码”</strong><br><br><strong>权限：  all  所有权限    usage 无权限   select,update,insert,delete，等权限</strong><br><br>数据库.表名： &emsp; *.* &emsp; 所有数据库的所有表<br><br>&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; 数据库名.* &emsp;单个数据库的所有表<br><br>&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;数据库名.表名 &emsp; 单个数据库的某个表<br><br>用户名： 授权的用户名<br><br>可以访问的地址：% 所有地址，但是localhost不能访问<br><br> &emsp;&emsp;&emsp;&emsp;localhost&emsp;  只有localhost可以访问<br>&emsp;&emsp;&emsp;&emsp;                             192.168.1.0/24&emsp; 可以访问网段地址<br><br>&emsp;&emsp;&emsp;&emsp;        192.168.1.1 &emsp;只能某个地址访问<br><br><br><br>flush privileges;  刷新授权</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul>
+<li><p>给bigdata用户授予在localhost登录，对mysql数据库进行create,select,update,insert,delete操作，但是不设置密码就可以登陆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant create,select,update,insert,delete on mysql.* to bigdata@&apos;localhost&apos;;</div><div class="line">mysql&gt; flush privileges;</div></pre></td></tr></table></figure>
+<ul>
+<li>登录数据库查看权限：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt;show grants;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>给bigdata用户授予从192.168.0.7的机器登陆，并有bigdatas数据库相应的权限</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant create,select,insert,update on bigdata.* to bigdata@&apos;192.168.0.7&apos; identified by &quot;bigdata&quot;;</div><div class="line">Query OK, 0 rows affected (0.00 sec)</div><div class="line">mysql&gt; flush privileges;</div></pre></td></tr></table></figure>
+<ul>
+<li>客户端登录<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -h192.168.0.7 -uzhaoyun -pzhaoyun;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>给用户授予可以把自己权限再授给其他人的权限</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; grant create on bigdta1 to zhaoyun@&apos;192.168.0.7&apos; identified by &quot;bigdta&quot; with grant option ;</div></pre></td></tr></table></figure>
+</li>
+<li><p>撤销权限</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql&gt; revoke create on bigdata.* from bigdata@&apos;192.168.0.7&apos; ;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="清空数据表"><a href="#清空数据表" class="headerlink" title="清空数据表"></a>清空数据表</h2><h3 id="清空数据表使id从1开始"><a href="#清空数据表使id从1开始" class="headerlink" title="清空数据表使id从1开始"></a>清空数据表使id从1开始</h3><p>truncate table 表名;</p>
+
       
     </div>
     
@@ -594,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql基本操作"><span class="nav-number">1.</span> <span class="nav-text">mysql基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对用户授权的操作"><span class="nav-number">1.1.</span> <span class="nav-text">对用户授权的操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql基本操作"><span class="nav-number">1.</span> <span class="nav-text">mysql基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对用户授权的操作"><span class="nav-number">1.1.</span> <span class="nav-text">对用户授权的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">1.1.1.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空数据表"><span class="nav-number">1.2.</span> <span class="nav-text">清空数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清空数据表使id从1开始"><span class="nav-number">1.2.1.</span> <span class="nav-text">清空数据表使id从1开始</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
