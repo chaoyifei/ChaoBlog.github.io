@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-06T12:57:29.688Z</updated>
+  <updated>2017-11-10T09:18:52.637Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql脚本操作</title>
+    <link href="http://yoursite.com/2017/11/10/mysql/"/>
+    <id>http://yoursite.com/2017/11/10/mysql/</id>
+    <published>2017-11-10T09:16:37.000Z</published>
+    <updated>2017-11-10T09:18:52.637Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="mysql基本操作"><a href="#mysql基本操作" class="headerlink" title="mysql基本操作"></a>mysql基本操作</h1><h2 id="对用户授权的操作"><a href="#对用户授权的操作" class="headerlink" title="对用户授权的操作"></a>对用户授权的操作</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;mysql基本操作&quot;&gt;&lt;a href=&quot;#mysql基本操作&quot; class=&quot;headerlink&quot; title=&quot;mysql基本操作&quot;&gt;&lt;/a&gt;mysql基本操作&lt;/h1&gt;&lt;h2 id=&quot;对用户授权的操作&quot;&gt;&lt;a href=&quot;#对用户授权的操作&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="基础" scheme="http://yoursite.com/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux防火墙</title>

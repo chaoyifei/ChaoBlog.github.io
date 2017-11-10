@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mysql脚本操作]]></title>
+    <url>%2F2017%2F11%2F10%2Fmysql%2F</url>
+    <content type="text"><![CDATA[mysql基本操作对用户授权的操作]]></content>
+      <categories>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux防火墙]]></title>
     <url>%2F2017%2F11%2F06%2FLinx-fireworld%2F</url>
     <content type="text"><![CDATA[Linux各系统防火墙设置Centos,RedhatCnetos6,Redhat6 查看防火墙状态： 1[linuxidc@localhost ~]$service iptable status 关闭防火墙(临时关闭) 1servcie iptables stop 永久关闭防火墙 1chkconfig iptables off 开启防火墙 1servcie iptables start 防火墙特定端口打开关闭 方法一： 123/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT/etc/init.d/iptables saveservice iptables restart 方法二 vi /etc/sysconfig/iptables 打开配置文件加入如下语句:-A INPUT -p tcp -m state –state NEW -m tcp –dport 80 -j ACCEPT 重启防火墙，修改完成。 关闭特定端口： 方法一：/sbin/iptables -I INPUT -p tcp –dport 80 -j DROP /etc/init.d/iptables save 保存修改service iptables restart 重启防火墙，修改生效 方法二： vi /etc/sysconfig/iptables 打开配置文件加入如下语句: -A INPUT -p tcp -m state –state NEW -m tcp –dport 80 -j DROP 重启防火墙，修改完成 查看端口状况：1/etc/init.d/iptables status Cnetos7,Redhat7 启动 1systemctl start firewalld 停止 1systemctl disable firewalld 禁用 1systemctl stop firewalld 状态 1systemctl status firewalld 开启端口 firewall-cmd –zone=public –add-port=80/tcp –permanent （–permanent永久生效，没有此参数重启后失效） 重新载入 1firewall-cmd --reload 查看 1firewall-cmd --zone= public --query-port=80/tcp 删除 1firewall-cmd --zone= public --remove-port=80/tcp --permanent systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。启动一个服务：systemctl start firewalld.service关闭一个服务：systemctl stop firewalld.service重启一个服务：systemctl restart firewalld.service显示一个服务的状态：systemctl status firewalld.service在开机时启用一个服务：systemctl enable firewalld.service在开机时禁用一个服务：systemctl disable firewalld.service查看服务是否开机启动：systemctl is-enabled firewalld.service查看已启动的服务列表：systemctl list-unit-files|grep enabled查看启动失败的服务列表：systemctl –failed 配置firewalld-cmd查看版本： firewall-cmd –version查看帮助： firewall-cmd –help显示状态： firewall-cmd –state查看所有打开的端口： firewall-cmd –zone=public –list-ports更新防火墙规则： firewall-cmd –reload查看区域信息: firewall-cmd –get-active-zones查看指定接口所属区域： firewall-cmd –get-zone-of-interface=eth0拒绝所有包：firewall-cmd –panic-on取消拒绝状态： firewall-cmd –panic-off查看是否拒绝： firewall-cmd –query-panic##SUSE SUSE防火墙查看命令123linux:~ # chkconfig -list|grep -i fireSuSEfirewall2_init 0:off 1:off 2:off 3:off 4:off 5:off 6:offSuSEfirewall2_setup 0:off 1:off 2:off 3:off 4:off 5:off 6:off SUSE防火墙立即停止命令1234linux:~ # SuSEfirewall2 stopSuSEfirewall2: Warning: ip6tables does not support state matching. Extended IPv6 support disabled.SuSEfirewall2: batch committing...SuSEfirewall2: Firewall rules unloaded. SUSE默认的防火墙设置为禁止所有外来联结。如果你想开放某个端口的话，就得修改防火墙设置开放这个端口。本文介绍了怎么修改SUSE的防火墙设置以开放某指定端口。手动修改： #vi /etc/sysconfig/SUSEfirewall2 #TCP端口的情况：FW_SERVICES_EXT_TCP = “6000” #UDP端口的情况：FW_SERVICES_EXT_UDP = “177”防火墙设置的生效： #rcSUSEfirewall2 restart]]></content>
