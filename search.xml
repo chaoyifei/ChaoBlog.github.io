@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[mysql脚本操作]]></title>
+    <title><![CDATA[mysql基本操作]]></title>
     <url>%2F2017%2F11%2F10%2Fmysql%2F</url>
     <content type="text"><![CDATA[mysql基本操作对用户授权的操作grant 权限 on 数据库名.表名 to 用户名@’可以访问的地址’ identified by “密码”权限： all 所有权限 usage 无权限 select,update,insert,delete，等权限数据库.表名： &emsp; *.* &emsp; 所有数据库的所有表&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; 数据库名.* &emsp;单个数据库的所有表&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;数据库名.表名 &emsp; 单个数据库的某个表用户名： 授权的用户名可以访问的地址：% 所有地址，但是localhost不能访问 &emsp;&emsp;&emsp;&emsp;localhost&emsp; 只有localhost可以访问&emsp;&emsp;&emsp;&emsp; 192.168.1.0/24&emsp; 可以访问网段地址&emsp;&emsp;&emsp;&emsp; 192.168.1.1 &emsp;只能某个地址访问flush privileges; 刷新授权 操作 给bigdata用户授予在localhost登录，对mysql数据库进行create,select,update,insert,delete操作，但是不设置密码就可以登陆 12mysql&gt; grant create,select,update,insert,delete on mysql.* to bigdata@&apos;localhost&apos;;mysql&gt; flush privileges; 登录数据库查看权限：1mysql&gt;show grants; 给bigdata用户授予从192.168.0.7的机器登陆，并有bigdatas数据库相应的权限 123mysql&gt; grant create,select,insert,update on bigdata.* to bigdata@&apos;192.168.0.7&apos; identified by &quot;bigdata&quot;;Query OK, 0 rows affected (0.00 sec)mysql&gt; flush privileges; 客户端登录1mysql -h192.168.0.7 -uzhaoyun -pzhaoyun; 给用户授予可以把自己权限再授给其他人的权限 1mysql&gt; grant create on bigdta1 to zhaoyun@&apos;192.168.0.7&apos; identified by &quot;bigdta&quot; with grant option ; 撤销权限 1mysql&gt; revoke create on bigdata.* from bigdata@&apos;192.168.0.7&apos; ; 清空数据表清空数据表使id从1开始truncate table 表名;]]></content>
       <categories>
