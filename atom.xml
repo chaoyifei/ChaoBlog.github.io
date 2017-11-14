@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-13T03:05:08.831Z</updated>
+  <updated>2017-11-14T02:14:14.656Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python爬取微博评论并存储到数据库（二）</title>
+    <link href="http://yoursite.com/2017/11/14/weibo1/"/>
+    <id>http://yoursite.com/2017/11/14/weibo1/</id>
+    <published>2017-11-14T01:46:08.000Z</published>
+    <updated>2017-11-14T02:14:14.656Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="从数据库中取出爬到的评论数据并处理"><a href="#从数据库中取出爬到的评论数据并处理" class="headerlink" title="从数据库中取出爬到的评论数据并处理"></a>从数据库中取出爬到的评论数据并处理</h2><h3 id="取数据"><a href="#取数据" class="headerlink" title="取数据"></a>取数据</h3><p>从数据库中读取数据,取出前13000条评论<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readmysql</span><span class="params">()</span>:</span></div><div class="line">    commentlist = []</div><div class="line">    textlist = []</div><div class="line">    userlist = []</div><div class="line">    conn = MySQLdb.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, db=<span class="string">'scrpay'</span>, passwd=<span class="string">'123456'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line">    <span class="keyword">with</span> conn:</div><div class="line">        cur = conn.cursor()</div><div class="line">        cur.execute(<span class="string">'SELECT * FROM weibo WHERE id &lt; %d'</span> % <span class="number">13000</span>)</div><div class="line">        rows = cur.fetchall()<span class="comment">#取出数据</span></div><div class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> rows:</div><div class="line">            row = list(row)<span class="comment">#将tuple转换为list进而修改</span></div><div class="line">            <span class="keyword">del</span> row[<span class="number">0</span>]</div><div class="line">            <span class="keyword">if</span> row <span class="keyword">not</span> <span class="keyword">in</span> commentlist:</div><div class="line">                commentlist.append(row)</div><div class="line">                comment_id = row[<span class="number">0</span>]</div><div class="line">                user_name = row[<span class="number">1</span>]</div><div class="line">                userlist.append(user_name)</div><div class="line">                created_at = row[<span class="number">2</span>]</div><div class="line">                text = row[<span class="number">3</span>]</div><div class="line">                textlist.append(text)</div><div class="line">                likenum = row[<span class="number">4</span>]</div><div class="line">                source = row[<span class="number">5</span>]</div><div class="line">                <span class="comment">#print comment_id.encode('utf-8'),user_name.encode('utf-8'),created_at.encode('utf-8'),text.encode('utf-8'),likenum.encode('utf-8'),source.encode('utf-8')</span></div><div class="line">    <span class="keyword">return</span> commentlist, textlist, userlist</div></pre></td></tr></table></figure></p><h3 id="分析数据"><a href="#分析数据" class="headerlink" title="分析数据"></a>分析数据</h3><p>用云词显示出现词汇的频率<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">wordtocloud</span><span class="params">(textlist)</span>:</span></div><div class="line">    fulltext=<span class="string">''</span></div><div class="line">    cloud = WordCloud(font_path=<span class="string">'font.ttf'</span>,</div><div class="line">            background_color=<span class="string">"white"</span>,  <span class="comment"># 背景颜色</span></div><div class="line">            max_words=<span class="number">2000</span>,  <span class="comment"># 词云显示的最大词数</span></div><div class="line">            <span class="comment">#mask=back_coloring,  # 设置背景图片</span></div><div class="line">            max_font_size=<span class="number">100</span>,  <span class="comment"># 字体最大值</span></div><div class="line">            random_state=<span class="number">42</span>,</div><div class="line">            width=<span class="number">1000</span>, height=<span class="number">860</span>, margin=<span class="number">2</span>,<span class="comment"># 设置图片默认的大小,但是如果使用背景图片的话,那么保存的图片大小将会按照其大小保存,margin为词语边缘距离</span></div><div class="line">            )</div><div class="line">    <span class="comment">#将数据放到文本中，使用jieba分词分出所有词汇</span></div><div class="line">    <span class="keyword">for</span> li <span class="keyword">in</span> textlist:</div><div class="line">        fulltext += <span class="string">' '</span>.join(jieba.cut(li,cut_all = <span class="keyword">False</span>))</div><div class="line">    wc = cloud.generate(fulltext)</div><div class="line">    <span class="comment">#image_colors = ImageColorGenerator(back_coloring)</span></div><div class="line">    plt.figure(<span class="string">"wordc"</span>)</div><div class="line">    plt.imshow(wc.recolor())</div><div class="line">    wc.to_file(<span class="string">'微博评论词云.png'</span>)</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;从数据库中取出爬到的评论数据并处理&quot;&gt;&lt;a href=&quot;#从数据库中取出爬到的评论数据并处理&quot; class=&quot;headerlink&quot; title=&quot;从数据库中取出爬到的评论数据并处理&quot;&gt;&lt;/a&gt;从数据库中取出爬到的评论数据并处理&lt;/h2&gt;&lt;h3 id=&quot;取数据&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>用python爬取微博评论并存储到数据库</title>
