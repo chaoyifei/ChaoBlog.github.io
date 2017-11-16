@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-14T02:26:49.273Z</updated>
+  <updated>2017-11-16T06:50:32.169Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python_string</title>
+    <link href="http://yoursite.com/2017/11/16/python-string/"/>
+    <id>http://yoursite.com/2017/11/16/python-string/</id>
+    <published>2017-11-16T06:32:40.000Z</published>
+    <updated>2017-11-16T06:50:32.169Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python标准库—-string模块"><a href="#Python标准库—-string模块" class="headerlink" title="Python标准库— string模块"></a>Python标准库— string模块</h1><p>String模块包含大量实用常量和类，以及一些过时的遗留功能，并还可用作字符串操作。</p><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><table><thead><tr><th>常用方法</th><th>描述</th></tr></thead><tbody><tr><td>str.capitalize()</td><td>把字符串的首字母大写  </td></tr><tr><td>str.center(width)</td><td>将原字符串用空格填充成一个长度为width的字符串，原字符串内容居中</td></tr><tr><td>str.count(s)</td><td>返回字符串s在str中出现的次数</td></tr><tr><td>str.decode(encoding=’UTF-8’,errors=’strict’)</td><td>以指定编码格式解码字符串</td></tr><tr><td>str.encode(encoding=’UTF-8’,errors=’strict’)</td><td>以指定编码格式编码字符串</td></tr><tr><td>str.endswith(s)</td><td>判断字符串str是否以字符串s结尾</td></tr><tr><td>str.find(s)</td><td>返回字符串s在字符串str中的位置索引，没有则返回-1</td></tr><tr><td>str.index(s)</td><td>和find()方法一样，但是如果s不存在于str中则会抛出异常</td></tr><tr><td>str.isalnum()</td><td>如果str至少有一个字符并且都是字母或数字则返回True,否则返回False</td></tr><tr><td>str.isalpha()</td><td>如果str至少有一个字符并且都是字母则返回True,否则返回False</td></tr><tr><td>str.isdigit()</td><td>如果str只包含数字则返回 True 否则返回 False</td></tr><tr><td>str.islower()</td><td>如果str存在区分大小写的字符，并且都是小写则返回True 否则返回False</td></tr><tr><td>str.isspace()</td><td>如果str中只包含空格，则返回 True，否则返回 False</td></tr><tr><td>str.istitle()</td><td>如果str是标题化的(单词首字母大写)则返回True，否则返回False</td></tr><tr><td>str.isupper()</td><td>如果str存在区分大小写的字符，并且都是大写则返回True 否则返回False</td></tr><tr><td>str.ljust(width)</td><td>返回一个原字符串左对齐的并使用空格填充至长度width的新字符串</td></tr><tr><td>str.lower()</td><td>转换str中所有大写字符为小写</td></tr><tr><td>str.lstrip()</td><td>去掉str左边的不可见字符</td></tr><tr><td>str.partition(s)</td><td>用s将str切分成三个值</td></tr><tr><td>str.replace(a, b)</td><td>将字符串str中的a替换成b</td></tr><tr><td>str.rfind(s)</td><td>类似于 find()函数，不过是从右边开始查找</td></tr><tr><td>str.rindex(s)</td><td>类似于 index()，不过是从右边开始</td></tr><tr><td>str.rjust(width)</td><td>返回一个原字符串右对齐的并使用空格填充至长度width的新字符串</td></tr><tr><td>str.rpartition(s)</td><td>类似于 partition()函数,不过是从右边开始查找</td></tr><tr><td>str.rstrip()</td><td>去掉str右边的不可见字符</td></tr><tr><td>str.split(s)</td><td>以s为分隔符切片str</td></tr><tr><td>str.splitlines()</td><td>按照行分隔，返回一个包含各行作为元素的列表</td></tr><tr><td>str.startswith(s)</td><td>检查字符串str是否是以s开头，是则返回True，否则返回False</td></tr><tr><td>str.strip()</td><td>等于同时执行rstrip()和lstrip()</td></tr><tr><td>str.title()</td><td>返回”标题化”的str,所有单词都是以大写开始，其余字母均为小写</td></tr><tr><td>str.upper()</td><td>返回str所有字符为大写的字符串</td></tr><tr><td>str.zfill(width)</td><td>返回长度为 width 的字符串，原字符串str右对齐，前面填充0</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Python标准库—-string模块&quot;&gt;&lt;a href=&quot;#Python标准库—-string模块&quot; class=&quot;headerlink&quot; title=&quot;Python标准库— string模块&quot;&gt;&lt;/a&gt;Python标准库— string模块&lt;/h1&gt;&lt;p&gt;St
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="String" scheme="http://yoursite.com/tags/String/"/>
+    
+  </entry>
   
   <entry>
     <title>python爬取微博评论并存储到数据库（二）</title>

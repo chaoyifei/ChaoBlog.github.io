@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[python_string]]></title>
+    <url>%2F2017%2F11%2F16%2Fpython-string%2F</url>
+    <content type="text"><![CDATA[Python标准库— string模块String模块包含大量实用常量和类，以及一些过时的遗留功能，并还可用作字符串操作。 常用方法 常用方法 描述 str.capitalize() 把字符串的首字母大写 str.center(width) 将原字符串用空格填充成一个长度为width的字符串，原字符串内容居中 str.count(s) 返回字符串s在str中出现的次数 str.decode(encoding=’UTF-8’,errors=’strict’) 以指定编码格式解码字符串 str.encode(encoding=’UTF-8’,errors=’strict’) 以指定编码格式编码字符串 str.endswith(s) 判断字符串str是否以字符串s结尾 str.find(s) 返回字符串s在字符串str中的位置索引，没有则返回-1 str.index(s) 和find()方法一样，但是如果s不存在于str中则会抛出异常 str.isalnum() 如果str至少有一个字符并且都是字母或数字则返回True,否则返回False str.isalpha() 如果str至少有一个字符并且都是字母则返回True,否则返回False str.isdigit() 如果str只包含数字则返回 True 否则返回 False str.islower() 如果str存在区分大小写的字符，并且都是小写则返回True 否则返回False str.isspace() 如果str中只包含空格，则返回 True，否则返回 False str.istitle() 如果str是标题化的(单词首字母大写)则返回True，否则返回False str.isupper() 如果str存在区分大小写的字符，并且都是大写则返回True 否则返回False str.ljust(width) 返回一个原字符串左对齐的并使用空格填充至长度width的新字符串 str.lower() 转换str中所有大写字符为小写 str.lstrip() 去掉str左边的不可见字符 str.partition(s) 用s将str切分成三个值 str.replace(a, b) 将字符串str中的a替换成b str.rfind(s) 类似于 find()函数，不过是从右边开始查找 str.rindex(s) 类似于 index()，不过是从右边开始 str.rjust(width) 返回一个原字符串右对齐的并使用空格填充至长度width的新字符串 str.rpartition(s) 类似于 partition()函数,不过是从右边开始查找 str.rstrip() 去掉str右边的不可见字符 str.split(s) 以s为分隔符切片str str.splitlines() 按照行分隔，返回一个包含各行作为元素的列表 str.startswith(s) 检查字符串str是否是以s开头，是则返回True，否则返回False str.strip() 等于同时执行rstrip()和lstrip() str.title() 返回”标题化”的str,所有单词都是以大写开始，其余字母均为小写 str.upper() 返回str所有字符为大写的字符串 str.zfill(width) 返回长度为 width 的字符串，原字符串str右对齐，前面填充0]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>String</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[python爬取微博评论并存储到数据库（二）]]></title>
     <url>%2F2017%2F11%2F14%2Fweibo1%2F</url>
     <content type="text"><![CDATA[从数据库中取出爬到的评论数据并处理取数据从数据库中读取数据,取出前13000条评论，将其转化为list以方便删除其中无用的数据，将处理后的数据分别存到不同的list中 123456789101112131415161718192021222324def readmysql(): commentlist = [] textlist = [] userlist = [] conn = MySQLdb.connect(host='127.0.0.1', user='root', db='scrpay', passwd='123456', charset='utf8') with conn: cur = conn.cursor() cur.execute('SELECT * FROM weibo WHERE id &lt; %d' % 13000) rows = cur.fetchall()#取出数据 for row in rows: row = list(row)#将tuple转换为list进而修改 del row[0] if row not in commentlist: commentlist.append(row) comment_id = row[0] user_name = row[1] userlist.append(user_name) created_at = row[2] text = row[3] textlist.append(text) likenum = row[4] source = row[5] #print comment_id.encode('utf-8'),user_name.encode('utf-8'),created_at.encode('utf-8'),text.encode('utf-8'),likenum.encode('utf-8'),source.encode('utf-8') return commentlist, textlist, userlist 分析数据用云词显示出现词汇的频率123456789101112131415161718def wordtocloud(textlist): fulltext='' cloud = WordCloud(font_path='font.ttf', background_color="white", # 背景颜色 max_words=2000, # 词云显示的最大词数 #mask=back_coloring, # 设置背景图片 max_font_size=100, # 字体最大值 random_state=42, width=1000, height=860, margin=2,# 设置图片默认的大小,但是如果使用背景图片的话,那么保存的图片大小将会按照其大小保存,margin为词语边缘距离 ) #将数据放到文本中，使用jieba分词分出所有词汇 for li in textlist: fulltext += ' '.join(jieba.cut(li,cut_all = False)) wc = cloud.generate(fulltext) #image_colors = ImageColorGenerator(back_coloring) plt.figure("wordc") plt.imshow(wc.recolor()) wc.to_file('微博评论词云.png')]]></content>
