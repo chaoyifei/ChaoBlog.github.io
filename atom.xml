@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-20T08:36:44.188Z</updated>
+  <updated>2017-11-20T09:39:18.756Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redhat7 配置使用centos的yum源</title>
+    <link href="http://yoursite.com/2017/11/20/linux-yum/"/>
+    <id>http://yoursite.com/2017/11/20/linux-yum/</id>
+    <published>2017-11-20T09:28:30.000Z</published>
+    <updated>2017-11-20T09:39:18.756Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="redhat7-配置使用centos的yum源"><a href="#redhat7-配置使用centos的yum源" class="headerlink" title="redhat7 配置使用centos的yum源"></a>redhat7 配置使用centos的yum源</h1><h2 id="检查是否安装yum包"><a href="#检查是否安装yum包" class="headerlink" title="检查是否安装yum包"></a>检查是否安装yum包</h2><p>查看RHEL是否安装了yum，若是安装了，那么又有哪些yum包</p><p>rpm -qa |grep yum</p><h2 id="删除redhat自带的yum包"><a href="#删除redhat自带的yum包" class="headerlink" title="删除redhat自带的yum包"></a>删除redhat自带的yum包</h2><p>rpm -qa|grep yum|xargs rpm -e –nodeps（不检查依赖，直接删除rpm包）</p><p>rpm -qa |grep yum</p><p>查看，无信息显示表示已经卸载完成。</p><h2 id="下载新的yum包。使用Centos7的yum包-或者上传rpm包"><a href="#下载新的yum包。使用Centos7的yum包-或者上传rpm包" class="headerlink" title="下载新的yum包。使用Centos7的yum包(或者上传rpm包)"></a>下载新的yum包。使用Centos7的yum包(或者上传rpm包)</h2><p>wget <a href="https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm" target="_blank" rel="external">https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm</a></p><p>wget <a href="https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-3.4.3-150.el7.centos.noarch.rpm" target="_blank" rel="external">https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-3.4.3-150.el7.centos.noarch.rpm</a></p><p>wget <a href="https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.31-40.el7.noarch.rpm" target="_blank" rel="external">https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.31-40.el7.noarch.rpm</a></p><p>wget <a href="https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-utils-1.1.31-40.el7.noarch.rpm" target="_blank" rel="external">https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-utils-1.1.31-40.el7.noarch.rpm</a></p><p>wget <a href="https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/python-urlgrabber-3.10-8.el7.noarch.rpm" target="_blank" rel="external">https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/python-urlgrabber-3.10-8.el7.noarch.rpm</a>     ( rpm -qa|grep python-urlgrabber|xargs rpm -e –nodeps )</p><p>安装yum软件包</p><p>注意:单个的安装包可能会依赖其它包（例如yum和yum-fastestmirror会相互依赖），所以我们可以把所有这些包放在一起，用一行命令将它们同时安装即可：</p><p>rpm -ivh python-urlgrabber-3.10-8.el7.noarch.rpm</p><p>rpm -ivh yum-metadata-parser-1.1.4-10.el7.x86_64.rpm yum-3.4.3-150.el7.centos.noarch.rpm yum-plugin-fastestmirror-1.1.31-40.el7.noarch.rpm</p><h2 id="更换yum源。使用阿里云的源"><a href="#更换yum源。使用阿里云的源" class="headerlink" title="更换yum源。使用阿里云的源"></a>更换yum源。使用阿里云的源</h2><p>下载新的CentOS-Base.repo 到/etc/yum.repos.d/</p><p>CentOS 5<br>wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-5.repo" target="_blank" rel="external">http://mirrors.aliyun.com/repo/Centos-5.repo</a></p><p>CentOS 6<br>wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-6.repo" target="_blank" rel="external">http://mirrors.aliyun.com/repo/Centos-6.repo</a><br>CentOS 7<br>wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="external">http://mirrors.aliyun.com/repo/Centos-7.repo</a><br>更改CentOS-Media.repo使其为不生效：<br>enabled=0<br>第三步:修改CentOS-Base.repo文件中的$releasever全部替换为版本号7.</p><h2 id="运行yum-makecache生成缓存"><a href="#运行yum-makecache生成缓存" class="headerlink" title="运行yum makecache生成缓存"></a>运行yum makecache生成缓存</h2><p>yum clean all<br>yum makecache<br>yum update</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;redhat7-配置使用centos的yum源&quot;&gt;&lt;a href=&quot;#redhat7-配置使用centos的yum源&quot; class=&quot;headerlink&quot; title=&quot;redhat7 配置使用centos的yum源&quot;&gt;&lt;/a&gt;redhat7 配置使用cento
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>函数可变参数处理</title>
