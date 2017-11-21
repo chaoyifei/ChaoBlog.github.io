@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-20T09:39:18.756Z</updated>
+  <updated>2017-11-21T08:42:50.152Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python自定义异常</title>
+    <link href="http://yoursite.com/2017/11/21/pyhton-except/"/>
+    <id>http://yoursite.com/2017/11/21/pyhton-except/</id>
+    <published>2017-11-21T08:19:24.000Z</published>
+    <updated>2017-11-21T08:42:50.152Z</updated>
+    
+    <content type="html"><![CDATA[<p>在写ssh类的时候遇到一个问题就是无论命令执行功与否程序都都会一直执行下去，造成很多错误。试着用自定义异常解决了这个问题。</p><h2 id="try"><a href="#try" class="headerlink" title="try"></a>try</h2><p>异常在try块里抛，如果会产生多个异常，捕捉第一个，匹配except，后边的不再捕捉</p><h2 id="except"><a href="#except" class="headerlink" title="except"></a>except</h2><p>抓异常</p><h2 id="else"><a href="#else" class="headerlink" title="else"></a>else</h2><p>try无异常，才会执行else</p><h2 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h2><p>无论try块是否抛异常，永远执行的代码，通常用来执行关闭文件，断开服务器连接的功能</p><h2 id="写一个自己的异常类"><a href="#写一个自己的异常类" class="headerlink" title="写一个自己的异常类"></a>写一个自己的异常类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Error</span><span class="params">(Exception)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">"error"</span></div></pre></td></tr></table></figure><h2 id="在执行语句前应用"><a href="#在执行语句前应用" class="headerlink" title="在执行语句前应用"></a>在执行语句前应用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    self.chan.send(source_passwd+<span class="string">'\n'</span>)</div><div class="line">    sleep(<span class="number">1</span>)</div><div class="line">    rets=self.chan.recv(<span class="number">65535</span>)</div><div class="line">    <span class="keyword">print</span> rets</div><div class="line">    <span class="keyword">if</span> <span class="string">'scp:'</span> <span class="keyword">in</span> rets:</div><div class="line">        <span class="keyword">raise</span> Error</div><div class="line"><span class="keyword">except</span> Exception:</div><div class="line">    <span class="keyword">print</span> <span class="string">'error'</span></div><div class="line">    <span class="keyword">print</span> rets</div><div class="line">    exit(<span class="number">1</span>)</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'end'</span></div></pre></td></tr></table></figure><p>在返回rets中若找到scp:则抛出一个自定义异常，except用来接收异常并打印异常返回,不管有没有异常都会执行finally</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在写ssh类的时候遇到一个问题就是无论命令执行功与否程序都都会一直执行下去，造成很多错误。试着用自定义异常解决了这个问题。&lt;/p&gt;
+&lt;h2 id=&quot;try&quot;&gt;&lt;a href=&quot;#try&quot; class=&quot;headerlink&quot; title=&quot;try&quot;&gt;&lt;/a&gt;try&lt;/h2&gt;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>redhat7 配置使用centos的yum源</title>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[python自定义异常]]></title>
+    <url>%2F2017%2F11%2F21%2Fpyhton-except%2F</url>
+    <content type="text"><![CDATA[在写ssh类的时候遇到一个问题就是无论命令执行功与否程序都都会一直执行下去，造成很多错误。试着用自定义异常解决了这个问题。 try异常在try块里抛，如果会产生多个异常，捕捉第一个，匹配except，后边的不再捕捉 except抓异常 elsetry无异常，才会执行else finally无论try块是否抛异常，永远执行的代码，通常用来执行关闭文件，断开服务器连接的功能 写一个自己的异常类123class Error(Exception): def __str__(self): return "error" 在执行语句前应用12345678910111213try: self.chan.send(source_passwd+'\n') sleep(1) rets=self.chan.recv(65535) print rets if 'scp:' in rets: raise Errorexcept Exception: print 'error' print rets exit(1)finally: print 'end' 在返回rets中若找到scp:则抛出一个自定义异常，except用来接收异常并打印异常返回,不管有没有异常都会执行finally]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[redhat7 配置使用centos的yum源]]></title>
     <url>%2F2017%2F11%2F20%2Flinux-yum%2F</url>
     <content type="text"><![CDATA[redhat7 配置使用centos的yum源检查是否安装yum包查看RHEL是否安装了yum，若是安装了，那么又有哪些yum包 rpm -qa |grep yum 删除redhat自带的yum包rpm -qa|grep yum|xargs rpm -e –nodeps（不检查依赖，直接删除rpm包） rpm -qa |grep yum 查看，无信息显示表示已经卸载完成。 下载新的yum包。使用Centos7的yum包(或者上传rpm包)wget https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm wget https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-3.4.3-150.el7.centos.noarch.rpm wget https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.31-40.el7.noarch.rpm wget https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/yum-utils-1.1.31-40.el7.noarch.rpm wget https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/python-urlgrabber-3.10-8.el7.noarch.rpm ( rpm -qa|grep python-urlgrabber|xargs rpm -e –nodeps ) 安装yum软件包 注意:单个的安装包可能会依赖其它包（例如yum和yum-fastestmirror会相互依赖），所以我们可以把所有这些包放在一起，用一行命令将它们同时安装即可： rpm -ivh python-urlgrabber-3.10-8.el7.noarch.rpm rpm -ivh yum-metadata-parser-1.1.4-10.el7.x86_64.rpm yum-3.4.3-150.el7.centos.noarch.rpm yum-plugin-fastestmirror-1.1.31-40.el7.noarch.rpm 更换yum源。使用阿里云的源下载新的CentOS-Base.repo 到/etc/yum.repos.d/ CentOS 5wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo CentOS 6wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repoCentOS 7wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo更改CentOS-Media.repo使其为不生效：enabled=0第三步:修改CentOS-Base.repo文件中的$releasever全部替换为版本号7. 运行yum makecache生成缓存yum clean allyum makecacheyum update]]></content>
