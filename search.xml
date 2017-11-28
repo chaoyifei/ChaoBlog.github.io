@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[screen]]></title>
+    <title><![CDATA[screen命令]]></title>
     <url>%2F2017%2F11%2F28%2Fscreen%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[screen命令在执行一些长时间任务的时候由于ssh断连会导致任务断掉，所以需要后台运行，nohup或者screen，但screen更强大一下。 创建一个session1screen -S name 其中-S参数表示为session指定一个名称，这样在查询的时候更容易知道应该连接到哪个session 从一个创建的session中退出同时按下ctrl a两个键，松开后按下d 如何查询当前有多少个session:1screen -ls 如何进入一个已经创建的session:1screen -r pid 如何销毁一个session:1kill pid]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[python自定义异常]]></title>

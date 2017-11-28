@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T03:54:32.596Z</updated>
+  <updated>2017-11-28T07:48:34.959Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>screen</title>
+    <title>screen命令</title>
     <link href="http://yoursite.com/2017/11/28/screen/"/>
     <id>http://yoursite.com/2017/11/28/screen/</id>
     <published>2017-11-28T03:54:32.000Z</published>
-    <updated>2017-11-28T03:54:32.596Z</updated>
+    <updated>2017-11-28T07:48:34.959Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h2><p>在执行一些长时间任务的时候由于ssh断连会导致任务断掉，所以需要后台运行，nohup或者screen，但screen更强大一下。</p><h3 id="创建一个session"><a href="#创建一个session" class="headerlink" title="创建一个session"></a>创建一个session</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">screen -S name</div></pre></td></tr></table></figure><p>其中-S参数表示为session指定一个名称，这样在查询的时候更容易知道应该连接到哪个session</p><h3 id="从一个创建的session中退出"><a href="#从一个创建的session中退出" class="headerlink" title="从一个创建的session中退出"></a>从一个创建的session中退出</h3><p>同时按下ctrl a两个键，松开后按下d</p><h3 id="如何查询当前有多少个session"><a href="#如何查询当前有多少个session" class="headerlink" title="如何查询当前有多少个session:"></a>如何查询当前有多少个session:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">screen -ls</div></pre></td></tr></table></figure><h3 id="如何进入一个已经创建的session"><a href="#如何进入一个已经创建的session" class="headerlink" title="如何进入一个已经创建的session:"></a>如何进入一个已经创建的session:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">screen -r pid</div></pre></td></tr></table></figure><h3 id="如何销毁一个session"><a href="#如何销毁一个session" class="headerlink" title="如何销毁一个session:"></a>如何销毁一个session:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill pid</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h2 id=&quot;screen命令&quot;&gt;&lt;a href=&quot;#screen命令&quot; class=&quot;headerlink&quot; title=&quot;screen命令&quot;&gt;&lt;/a&gt;screen命令&lt;/h2&gt;&lt;p&gt;在执行一些长时间任务的时候由于ssh断连会导致任务断掉，所以需要后台运行，nohup或者sc
+      
+    
     </summary>
     
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
     
   </entry>
   
