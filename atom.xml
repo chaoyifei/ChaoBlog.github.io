@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-21T08:42:50.152Z</updated>
+  <updated>2017-11-28T03:54:32.596Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>screen</title>
+    <link href="http://yoursite.com/2017/11/28/screen/"/>
+    <id>http://yoursite.com/2017/11/28/screen/</id>
+    <published>2017-11-28T03:54:32.000Z</published>
+    <updated>2017-11-28T03:54:32.596Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>python自定义异常</title>

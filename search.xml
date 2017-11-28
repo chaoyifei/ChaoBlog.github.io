@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[screen]]></title>
+    <url>%2F2017%2F11%2F28%2Fscreen%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[python自定义异常]]></title>
     <url>%2F2017%2F11%2F21%2Fpyhton-except%2F</url>
     <content type="text"><![CDATA[在写ssh类的时候遇到一个问题就是无论命令执行功与否程序都都会一直执行下去，造成很多错误。试着用自定义异常解决了这个问题。 try异常在try块里抛，如果会产生多个异常，捕捉第一个，匹配except，后边的不再捕捉 except抓异常 elsetry无异常，才会执行else finally无论try块是否抛异常，永远执行的代码，通常用来执行关闭文件，断开服务器连接的功能 写一个自己的异常类123class Error(Exception): def __str__(self): return "error" 在执行语句前应用12345678910111213try: self.chan.send(source_passwd+'\n') sleep(1) rets=self.chan.recv(65535) print rets if 'scp:' in rets: raise Errorexcept Exception: print 'error' print rets exit(1)finally: print 'end' 在返回rets中若找到scp:则抛出一个自定义异常，except用来接收异常并打印异常返回,不管有没有异常都会执行finally]]></content>
