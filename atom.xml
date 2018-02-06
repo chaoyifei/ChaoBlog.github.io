@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-28T07:48:34.959Z</updated>
+  <updated>2018-02-06T14:19:00.795Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux批量查找复制</title>
+    <link href="http://yoursite.com/2018/02/06/Linux-cp/"/>
+    <id>http://yoursite.com/2018/02/06/Linux-cp/</id>
+    <published>2018-02-06T14:00:48.000Z</published>
+    <updated>2018-02-06T14:19:00.795Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux批量查找文件并复制"><a href="#Linux批量查找文件并复制" class="headerlink" title="Linux批量查找文件并复制"></a>Linux批量查找文件并复制</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>要查找到一个目录下的所有txt文件并复制到其他地方<br><br>例如：<br><br>目录/a下：<br></p><p>/a 目录下面的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/a/1.txt</div><div class="line">/a/2.txt</div><div class="line">/a/3.doc</div><div class="line">/a/4.xml</div><div class="line">/a/b/5.txt</div><div class="line">/a/c/6.txt</div><div class="line">...</div></pre></td></tr></table></figure></p><p>现在需要将所有的txt文件复制到/b目录下</p><p>目前有两种办法：</p><ul><li><p><strong>用find命令的选项-exec来执行相应的命令</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># find /a –name *.txt -exec cp &#123;&#125; /b \;</div></pre></td></tr></table></figure><p> {}表示的是由find找到的内容</p><p>-exec 是find命令额外动作的开始； \;表示的是额外动作的结束。-exec和\;中间的部分就是额外动作执行的命令。</p></li><li><strong>利用管道(|) 和 xargs 命令</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># find /a –name *.txt | xargs cp –t /b</div></pre></td></tr></table></figure></li></ul><p>xargs 读取find的结果作为cp的输入数据。<font color="#DC143C">这里需要注意的是cp命令一定要加-t选项。</font>因为-t选项后面跟着的目录是目标目录。如果不加-t的话-b会被认为是源目录，而xargs读入的文件成了目标目录。这样是会报错误的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Linux批量查找文件并复制&quot;&gt;&lt;a href=&quot;#Linux批量查找文件并复制&quot; class=&quot;headerlink&quot; title=&quot;Linux批量查找文件并复制&quot;&gt;&lt;/a&gt;Linux批量查找文件并复制&lt;/h2&gt;&lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot;
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>screen命令</title>
