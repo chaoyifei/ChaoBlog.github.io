@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-06T14:19:00.795Z</updated>
+  <updated>2018-02-10T12:28:14.732Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>shell_bianliang</title>
+    <link href="http://yoursite.com/2018/02/10/shell-bianliang/"/>
+    <id>http://yoursite.com/2018/02/10/shell-bianliang/</id>
+    <published>2018-02-10T12:28:14.000Z</published>
+    <updated>2018-02-10T12:28:14.732Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux批量查找复制</title>

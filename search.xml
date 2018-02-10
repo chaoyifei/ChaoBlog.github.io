@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[shell_bianliang]]></title>
+    <url>%2F2018%2F02%2F10%2Fshell-bianliang%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Linux批量查找复制]]></title>
     <url>%2F2018%2F02%2F06%2FLinux-cp%2F</url>
     <content type="text"><![CDATA[Linux批量查找文件并复制场景要查找到一个目录下的所有txt文件并复制到其他地方例如：目录/a下： /a 目录下面的内容1234567/a/1.txt/a/2.txt/a/3.doc/a/4.xml/a/b/5.txt/a/c/6.txt... 现在需要将所有的txt文件复制到/b目录下 目前有两种办法： 用find命令的选项-exec来执行相应的命令 1# find /a –name *.txt -exec cp &#123;&#125; /b \; {}表示的是由find找到的内容 -exec 是find命令额外动作的开始； \;表示的是额外动作的结束。-exec和\;中间的部分就是额外动作执行的命令。 利用管道(|) 和 xargs 命令1# find /a –name *.txt | xargs cp –t /b xargs 读取find的结果作为cp的输入数据。这里需要注意的是cp命令一定要加-t选项。因为-t选项后面跟着的目录是目标目录。如果不加-t的话-b会被认为是源目录，而xargs读入的文件成了目标目录。这样是会报错误的。]]></content>
