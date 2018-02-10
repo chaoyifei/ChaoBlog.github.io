@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[shell_bianliang]]></title>
+    <title><![CDATA[shell变量]]></title>
     <url>%2F2018%2F02%2F10%2Fshell-bianliang%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[shell变量与传参只读变量使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。 1234# 只读变量myurl=&quot;www.shell.com&quot;readonly myurlmyurl=&quot;www.shell2.com&quot; 运行结果：1./bianliang.sh: line 13: myurl: readonly variable 删除变量使用 unset 命令可以删除变量。语法： 1unset variable_name 变量被删除后不能再次使用。unset 命令不能删除只读变量。 123myUrl=&quot;http://www.shell3.com&quot;unset myUrlecho $myUrl 运行结果为空 获取字符串长度12str=&quot;abcd&quot;echo $&#123;#str&#125; 输出4 提取字符串1echo $&#123;str:1:2&#125; 输出bc Linux 的字符串截取#、## 表示从左边开始删除。一个 # 表示从左边删除到第一个指定的字符；两个 # 表示从左边删除到最后一个指定的字符。 %、%% 表示从右边开始删除。一个 % 表示从右边删除到第一个指定的字符；两个 % 表示从左边删除到最后一个指定的字符。删除包括了指定的字符本身。 123456789101112var=&quot;http://www.shell.com/linux/linux-shell-variable.html&quot;s1=$&#123;var%%t*&#125;s2=$&#123;var%t*&#125;s3=$&#123;var%%.*&#125;s4=$&#123;var#*/&#125;s5=$&#123;var##*/&#125;echo &quot;source:&quot;$&#123;var&#125;echo &quot;%%t*:&quot;$&#123;s1&#125;echo &quot;%t*:&quot;$&#123;s2&#125;echo &quot;%%.*/:&quot;$&#123;s3&#125;echo &quot;#*/:&quot;$&#123;s4&#125;echo &quot;##*/:&quot;$&#123;s5&#125; 运行结果：1234567source:http://www.shell.com/linux/linux-shell-variable.html%%t*:h%t*:http://www.shell.com/linux/linux-shell-variable.h%%.*/:http://www#*/:/www.shell.com/linux/linux-shell-variable.html##*/:linux-shell-variable.html[root@localhost Linux]# 参数传递]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Linux批量查找复制]]></title>

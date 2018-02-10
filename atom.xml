@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-10T12:28:14.732Z</updated>
+  <updated>2018-02-10T13:16:02.004Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>shell_bianliang</title>
+    <title>shell变量</title>
     <link href="http://yoursite.com/2018/02/10/shell-bianliang/"/>
     <id>http://yoursite.com/2018/02/10/shell-bianliang/</id>
     <published>2018-02-10T12:28:14.000Z</published>
-    <updated>2018-02-10T12:28:14.732Z</updated>
+    <updated>2018-02-10T13:16:02.004Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="shell变量与传参"><a href="#shell变量与传参" class="headerlink" title="shell变量与传参"></a>shell变量与传参</h2><h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><p>使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 只读变量</div><div class="line">myurl=&quot;www.shell.com&quot;</div><div class="line">readonly myurl</div><div class="line">myurl=&quot;www.shell2.com&quot;</div></pre></td></tr></table></figure><p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./bianliang.sh: line 13: myurl: readonly variable</div></pre></td></tr></table></figure></p><h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><p>使用 unset 命令可以删除变量。语法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset variable_name</div></pre></td></tr></table></figure><p>变量被删除后不能再次使用。unset 命令不能删除只读变量。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">myUrl=&quot;http://www.shell3.com&quot;</div><div class="line">unset myUrl</div><div class="line">echo $myUrl</div></pre></td></tr></table></figure><p>运行结果为空  </p><h3 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str=&quot;abcd&quot;</div><div class="line">echo $&#123;#str&#125;</div></pre></td></tr></table></figure><p>输出4</p><h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $&#123;str:1:2&#125;</div></pre></td></tr></table></figure><p>输出bc</p><h3 id="Linux-的字符串截取"><a href="#Linux-的字符串截取" class="headerlink" title="Linux 的字符串截取"></a>Linux 的字符串截取</h3><p>#、## 表示从左边开始删除。一个 # 表示从左边删除到第一个指定的字符；两个 # 表示从左边删除到最后一个指定的字符。</p><p>%、%% 表示从右边开始删除。一个 % 表示从右边删除到第一个指定的字符；两个 % 表示从左边删除到最后一个指定的字符。<br>删除包括了指定的字符本身。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var=&quot;http://www.shell.com/linux/linux-shell-variable.html&quot;</div><div class="line">s1=$&#123;var%%t*&#125;</div><div class="line">s2=$&#123;var%t*&#125;</div><div class="line">s3=$&#123;var%%.*&#125;</div><div class="line">s4=$&#123;var#*/&#125;</div><div class="line">s5=$&#123;var##*/&#125;</div><div class="line">echo &quot;source:&quot;$&#123;var&#125;</div><div class="line">echo &quot;%%t*:&quot;$&#123;s1&#125;</div><div class="line">echo &quot;%t*:&quot;$&#123;s2&#125;</div><div class="line">echo &quot;%%.*/:&quot;$&#123;s3&#125;</div><div class="line">echo &quot;#*/:&quot;$&#123;s4&#125;</div><div class="line">echo &quot;##*/:&quot;$&#123;s5&#125;</div></pre></td></tr></table></figure><p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">source:http://www.shell.com/linux/linux-shell-variable.html</div><div class="line">%%t*:h</div><div class="line">%t*:http://www.shell.com/linux/linux-shell-variable.h</div><div class="line">%%.*/:http://www</div><div class="line">#*/:/www.shell.com/linux/linux-shell-variable.html</div><div class="line">##*/:linux-shell-variable.html</div><div class="line">[root@localhost Linux]#</div></pre></td></tr></table></figure></p><h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h2 id=&quot;shell变量与传参&quot;&gt;&lt;a href=&quot;#shell变量与传参&quot; class=&quot;headerlink&quot; title=&quot;shell变量与传参&quot;&gt;&lt;/a&gt;shell变量与传参&lt;/h2&gt;&lt;h3 id=&quot;只读变量&quot;&gt;&lt;a href=&quot;#只读变量&quot; class=&quot;head
+      
+    
     </summary>
     
+      <category term="shell" scheme="http://yoursite.com/categories/shell/"/>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
   </entry>
   

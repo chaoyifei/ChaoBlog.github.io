@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="my blog" />
+  <meta name="keywords" content="shell," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Linux,python,bigdata">
+<meta name="description" content="shell变量与传参只读变量使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。 1234# 只读变量myurl=&amp;quot;www.shell.com&amp;quot;readonly myurlmyurl=&amp;quot;www.shell2.com&amp;quot; 运行结果：1./bianliang.sh: line 13: myurl: readonly variable 删除">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell_bianliang">
+<meta property="og:title" content="shell变量">
 <meta property="og:url" content="http://yoursite.com/2018/02/10/shell-bianliang/index.html">
 <meta property="og:site_name" content="CHaoyi&#39;s">
-<meta property="og:description" content="Linux,python,bigdata">
+<meta property="og:description" content="shell变量与传参只读变量使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。 1234# 只读变量myurl=&amp;quot;www.shell.com&amp;quot;readonly myurlmyurl=&amp;quot;www.shell2.com&amp;quot; 运行结果：1./bianliang.sh: line 13: myurl: readonly variable 删除">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-10T12:28:14.732Z">
+<meta property="og:updated_time" content="2018-02-10T13:16:02.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell_bianliang">
-<meta name="twitter:description" content="Linux,python,bigdata">
+<meta name="twitter:title" content="shell变量">
+<meta name="twitter:description" content="shell变量与传参只读变量使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。 1234# 只读变量myurl=&amp;quot;www.shell.com&amp;quot;readonly myurlmyurl=&amp;quot;www.shell2.com&amp;quot; 运行结果：1./bianliang.sh: line 13: myurl: readonly variable 删除">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>shell_bianliang | CHaoyi's</title>
+  <title>shell变量 | CHaoyi's</title>
   
 
 
@@ -313,7 +314,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">shell_bianliang</h2>
+          <h2 class="post-title" itemprop="name headline">shell变量</h2>
         
 
         <div class="post-meta">
@@ -336,6 +337,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -343,7 +366,7 @@
 
           
           
-             <span id="/2018/02/10/shell-bianliang/" class="leancloud_visitors" data-flag-title="shell_bianliang">
+             <span id="/2018/02/10/shell-bianliang/" class="leancloud_visitors" data-flag-title="shell变量">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,7 +397,23 @@
       
 
       
-        
+        <h2 id="shell变量与传参"><a href="#shell变量与传参" class="headerlink" title="shell变量与传参"></a>shell变量与传参</h2><h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><p>使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 只读变量</div><div class="line">myurl=&quot;www.shell.com&quot;</div><div class="line">readonly myurl</div><div class="line">myurl=&quot;www.shell2.com&quot;</div></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./bianliang.sh: line 13: myurl: readonly variable</div></pre></td></tr></table></figure></p>
+<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><p>使用 unset 命令可以删除变量。语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset variable_name</div></pre></td></tr></table></figure>
+<p>变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">myUrl=&quot;http://www.shell3.com&quot;</div><div class="line">unset myUrl</div><div class="line">echo $myUrl</div></pre></td></tr></table></figure>
+<p>运行结果为空  </p>
+<h3 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str=&quot;abcd&quot;</div><div class="line">echo $&#123;#str&#125;</div></pre></td></tr></table></figure>
+<p>输出4</p>
+<h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $&#123;str:1:2&#125;</div></pre></td></tr></table></figure>
+<p>输出bc</p>
+<h3 id="Linux-的字符串截取"><a href="#Linux-的字符串截取" class="headerlink" title="Linux 的字符串截取"></a>Linux 的字符串截取</h3><p>#、## 表示从左边开始删除。一个 # 表示从左边删除到第一个指定的字符；两个 # 表示从左边删除到最后一个指定的字符。</p>
+<p>%、%% 表示从右边开始删除。一个 % 表示从右边删除到第一个指定的字符；两个 % 表示从左边删除到最后一个指定的字符。<br>删除包括了指定的字符本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var=&quot;http://www.shell.com/linux/linux-shell-variable.html&quot;</div><div class="line">s1=$&#123;var%%t*&#125;</div><div class="line">s2=$&#123;var%t*&#125;</div><div class="line">s3=$&#123;var%%.*&#125;</div><div class="line">s4=$&#123;var#*/&#125;</div><div class="line">s5=$&#123;var##*/&#125;</div><div class="line">echo &quot;source:&quot;$&#123;var&#125;</div><div class="line">echo &quot;%%t*:&quot;$&#123;s1&#125;</div><div class="line">echo &quot;%t*:&quot;$&#123;s2&#125;</div><div class="line">echo &quot;%%.*/:&quot;$&#123;s3&#125;</div><div class="line">echo &quot;#*/:&quot;$&#123;s4&#125;</div><div class="line">echo &quot;##*/:&quot;$&#123;s5&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">source:http://www.shell.com/linux/linux-shell-variable.html</div><div class="line">%%t*:h</div><div class="line">%t*:http://www.shell.com/linux/linux-shell-variable.h</div><div class="line">%%.*/:http://www</div><div class="line">#*/:/www.shell.com/linux/linux-shell-variable.html</div><div class="line">##*/:linux-shell-variable.html</div><div class="line">[root@localhost Linux]#</div></pre></td></tr></table></figure></p>
+<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3>
       
     </div>
     
@@ -388,6 +427,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
       
 
       
@@ -458,8 +503,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -489,7 +543,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -500,7 +554,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -546,6 +600,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell变量与传参"><span class="nav-number">1.</span> <span class="nav-text">shell变量与传参</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#只读变量"><span class="nav-number">1.1.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除变量"><span class="nav-number">1.2.</span> <span class="nav-text">删除变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">1.3.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取字符串"><span class="nav-number">1.4.</span> <span class="nav-text">提取字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-的字符串截取"><span class="nav-number">1.5.</span> <span class="nav-text">Linux 的字符串截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数传递"><span class="nav-number">1.6.</span> <span class="nav-text">参数传递</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
